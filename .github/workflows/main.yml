@@ -1,0 +1,25 @@
+name: CleanWave_Auto_Scanner
+on:
+  schedule:
+    - cron: '*/5 * * * *' # تشغيل كل 5 دقائق
+  workflow_dispatch: # للتشغيل اليدوي
+
+jobs:
+  run_bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ccxt pandas pandas-ta
+
+      - name: Execute Bot
+        run: python bot.py
