@@ -1,6 +1,6 @@
 import ccxt
 import pandas as pd
-import pandas_ta as ta
+import pandas-ta as ta
 
 def fetch_data(symbol='BTC/USDT', timeframe='15m', limit=100):
     exchange = ccxt.binance()
